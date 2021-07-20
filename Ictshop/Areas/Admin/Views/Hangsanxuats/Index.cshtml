@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Ictshop.Models.Hangsanxuat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý hãng điện thoại</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới hãng", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Mã hãng
+        </th>
+        <th> Tên hãng
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mahang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tenhang)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.Mahang }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.Mahang }) |
+        @Html.ActionLink("Xoá", "Delete", new { id = item.Mahang })
+    </td>
+</tr>
+}
+
+</table>

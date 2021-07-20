@@ -1,0 +1,42 @@
+﻿@model Ictshop.Models.LoginModel
+
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hãy đăng nhập để sử dụng đầy đủ tính năng của Website</h2>
+
+@using (Html.BeginForm("Dangnhap", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.userMail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.userMail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.userMail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new {type ="Password", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đăng nhập" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@ViewBag.Fail
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

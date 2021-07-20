@@ -1,0 +1,23 @@
+﻿@model Ictshop.Models.Nguoidung
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var u = Session["use"] as Ictshop.Models.Nguoidung;
+}
+
+@{
+    if (u != null)
+    {
+
+        <h2>Xin chào : @u.Email</h2>
+        @Html.ActionLink("Đăng xuất", "DangXuat", "User")
+    }
+
+    <div> Cường IT</div>
+
+}
+
+
+
+
+

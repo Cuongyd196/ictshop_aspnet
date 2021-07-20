@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Ictshop.Models.Nguoidung>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lý người dùng</h2>
+
+<p>
+    @*<button class="btn-default"> @Html.ActionLink("Thêm mới", "Create") </button>*@
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dienthoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diachi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhanQuyen.TenQuyen)
+        </th>
+        <th> Hành động</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hoten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Dienthoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Matkhau)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diachi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.MaNguoiDung }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaNguoiDung }) |
+        @Html.ActionLink("Xoá", "Delete", new { id = item.MaNguoiDung })
+    </td>
+</tr>
+}
+
+</table>

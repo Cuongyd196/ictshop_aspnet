@@ -1,0 +1,107 @@
+﻿@model Ictshop.Models.Sanpham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <h2>Thông tin chi tiết</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hangsanxuat.Tenhang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hangsanxuat.Tenhang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hedieuhanh.Tenhdh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hedieuhanh.Tenhdh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tensp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giatien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giatien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thesim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thesim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bonhotrong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bonhotrong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sanphammoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sanphammoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anhbia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anhbia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Masp }) |
+    @Html.ActionLink("Về trang chủ", "Index")
+</p>

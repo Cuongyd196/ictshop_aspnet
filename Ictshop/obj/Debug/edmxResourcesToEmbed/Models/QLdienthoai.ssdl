@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLdienthoaiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Chitietdonhang">
+    <Key>
+      <PropertyRef Name="Madon" />
+      <PropertyRef Name="Masp" />
+    </Key>
+    <Property Name="Madon" Type="int" Nullable="false" />
+    <Property Name="Masp" Type="int" Nullable="false" />
+    <Property Name="Soluong" Type="int" />
+    <Property Name="Dongia" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Donhang">
+    <Key>
+      <PropertyRef Name="Madon" />
+    </Key>
+    <Property Name="Madon" Type="int" Nullable="false" />
+    <Property Name="Ngaydat" Type="datetime" />
+    <Property Name="Tinhtrang" Type="int" />
+    <Property Name="Makh" Type="int" />
+  </EntityType>
+  <EntityType Name="Hangsanxuat">
+    <Key>
+      <PropertyRef Name="Mahang" />
+    </Key>
+    <Property Name="Mahang" Type="int" Nullable="false" />
+    <Property Name="Tenhang" Type="nchar" MaxLength="10" />
+    <Property Name="Quocgia" Type="nvarchar" MaxLength="10" />
+    <Property Name="Mota" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Hedieuhanh">
+    <Key>
+      <PropertyRef Name="Mahdh" />
+    </Key>
+    <Property Name="Mahdh" Type="int" Nullable="false" />
+    <Property Name="Tenhdh" Type="nchar" MaxLength="10" />
+    <Property Name="Mota" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Khachhang">
+    <Key>
+      <PropertyRef Name="Makh" />
+    </Key>
+    <Property Name="Makh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tenkh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dienthoai" Type="nchar" MaxLength="10" />
+    <Property Name="Taikhoan" Type="varchar" MaxLength="50" />
+    <Property Name="Matkhau" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Diachi" Type="nchar" MaxLength="10" />
+    <Property Name="Gioitinh" Type="nchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="Sanpham">
+    <Key>
+      <PropertyRef Name="Masp" />
+    </Key>
+    <Property Name="Masp" Type="int" Nullable="false" />
+    <Property Name="Tensp" Type="nvarchar" MaxLength="50" />
+    <Property Name="Giatien" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Souong" Type="int" />
+    <Property Name="Mota" Type="ntext" />
+    <Property Name="Anhbia" Type="nvarchar(max)" />
+    <Property Name="Mahang" Type="int" />
+    <Property Name="Mahdh" Type="int" />
+    <Property Name="Moi" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Chitietdonhang_Donhang">
+    <End Role="Donhang" Type="Self.Donhang" Multiplicity="1" />
+    <End Role="Chitietdonhang" Type="Self.Chitietdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Donhang">
+        <PropertyRef Name="Madon" />
+      </Principal>
+      <Dependent Role="Chitietdonhang">
+        <PropertyRef Name="Madon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Chitietdonhang_Sanpham">
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="1" />
+    <End Role="Chitietdonhang" Type="Self.Chitietdonhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sanpham">
+        <PropertyRef Name="Masp" />
+      </Principal>
+      <Dependent Role="Chitietdonhang">
+        <PropertyRef Name="Masp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Donhang_Khachhang">
+    <End Role="Khachhang" Type="Self.Khachhang" Multiplicity="0..1" />
+    <End Role="Donhang" Type="Self.Donhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khachhang">
+        <PropertyRef Name="Makh" />
+      </Principal>
+      <Dependent Role="Donhang">
+        <PropertyRef Name="Makh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hedieuhanh_Hedieuhanh">
+    <End Role="Hedieuhanh" Type="Self.Hedieuhanh" Multiplicity="1" />
+    <End Role="Hedieuhanh1" Type="Self.Hedieuhanh" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Hedieuhanh">
+        <PropertyRef Name="Mahdh" />
+      </Principal>
+      <Dependent Role="Hedieuhanh1">
+        <PropertyRef Name="Mahdh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sanpham_Hangsanxuat">
+    <End Role="Hangsanxuat" Type="Self.Hangsanxuat" Multiplicity="0..1" />
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hangsanxuat">
+        <PropertyRef Name="Mahang" />
+      </Principal>
+      <Dependent Role="Sanpham">
+        <PropertyRef Name="Mahdh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sanpham_Hedieuhanh">
+    <End Role="Hedieuhanh" Type="Self.Hedieuhanh" Multiplicity="0..1" />
+    <End Role="Sanpham" Type="Self.Sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hedieuhanh">
+        <PropertyRef Name="Mahdh" />
+      </Principal>
+      <Dependent Role="Sanpham">
+        <PropertyRef Name="Mahdh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLdienthoaiModelStoreContainer">
+    <EntitySet Name="Chitietdonhang" EntityType="Self.Chitietdonhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Donhang" EntityType="Self.Donhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hangsanxuat" EntityType="Self.Hangsanxuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hedieuhanh" EntityType="Self.Hedieuhanh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khachhang" EntityType="Self.Khachhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sanpham" EntityType="Self.Sanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Chitietdonhang_Donhang" Association="Self.FK_Chitietdonhang_Donhang">
+      <End Role="Donhang" EntitySet="Donhang" />
+      <End Role="Chitietdonhang" EntitySet="Chitietdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Chitietdonhang_Sanpham" Association="Self.FK_Chitietdonhang_Sanpham">
+      <End Role="Sanpham" EntitySet="Sanpham" />
+      <End Role="Chitietdonhang" EntitySet="Chitietdonhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Donhang_Khachhang" Association="Self.FK_Donhang_Khachhang">
+      <End Role="Khachhang" EntitySet="Khachhang" />
+      <End Role="Donhang" EntitySet="Donhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hedieuhanh_Hedieuhanh" Association="Self.FK_Hedieuhanh_Hedieuhanh">
+      <End Role="Hedieuhanh" EntitySet="Hedieuhanh" />
+      <End Role="Hedieuhanh1" EntitySet="Hedieuhanh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sanpham_Hangsanxuat" Association="Self.FK_Sanpham_Hangsanxuat">
+      <End Role="Hangsanxuat" EntitySet="Hangsanxuat" />
+      <End Role="Sanpham" EntitySet="Sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sanpham_Hedieuhanh" Association="Self.FK_Sanpham_Hedieuhanh">
+      <End Role="Hedieuhanh" EntitySet="Hedieuhanh" />
+      <End Role="Sanpham" EntitySet="Sanpham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8548f68078c04c7ba153c66f1365b452" Name="Diagram1">
+        <EntityTypeShape EntityType="QLdienthoaiModel1.Chitietdonhang" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel1.Donhang" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel1.Hangsanxuat" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel1.Hedieuhanh" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel1.Khachhang" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel1.Sanpham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel1.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="QLdienthoaiModel1.FK_Chitietdonhang_Donhang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel1.FK_Chitietdonhang_Sanpham" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel1.FK_Donhang_Khachhang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel1.FK_Sanpham_Hangsanxuat" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel1.FK_Hedieuhanh_Hedieuhanh" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel1.FK_Sanpham_Hedieuhanh" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

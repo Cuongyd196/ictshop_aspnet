@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Ictshop.Models.PhanQuyen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quyền truy cập</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới quyền", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Tên Quyền
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDQuyen)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenQuyen)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.IDQuyen }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.IDQuyen }) |
+        @Html.ActionLink("Xoá", "Delete", new { id = item.IDQuyen })
+    </td>
+</tr>
+}
+
+</table>

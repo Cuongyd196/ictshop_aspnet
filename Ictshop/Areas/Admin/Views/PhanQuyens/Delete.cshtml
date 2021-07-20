@@ -1,0 +1,33 @@
+﻿@model Ictshop.Models.PhanQuyen
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xoá quyền</h2>
+
+
+<div>
+    <h4>Phân quyền </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên quyền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenQuyen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "ICT SHOP";
+    
+}
+
+
+<br />
+<div class="row">
+    <div class="col-md-8">
+       @Html.Action("SlidePartial","Home")
+    </div>
+    <div class="col-md-4">
+        <img src="~/HinhanhSP/qc3.gif" class="img-responsive" alt="" />
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<div>
+    <img class="img-responsive" src="~/HinhanhSP/ban1.jpg" />
+</div>
+<br />
+<div class="spnoibat">
+    <div class="row">
+
+        <h3> SẢN PHẨM NỔI BẬT</h3>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb1.png" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb2.png" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb3.png" class="img-responsive" alt="" />
+        </div>
+    </div>
+</div>
+<div class="danhmuc">
+    @Html.Action("DanhmucPartial", "Danhmuc")
+</div>
+<div class="dt">
+
+    @Html.Action("dtiphonePartial", "Sanpham")
+</div>
+<div class="dt">
+
+    @Html.Action("dtsamsungpartial", "Sanpham")
+</div>
+
+<div class="dt">
+
+    @Html.Action("dtxiaomipartial", "Sanpham")
+</div>
+
+<div class="row">
+    <h2> Tin tức sản phẩm</h2>
+    <div class="col-md-8">
+        Video
+    </div>
+    <div class="col-md-4">
+        Tin tức
+    </div>
+</div>
+
