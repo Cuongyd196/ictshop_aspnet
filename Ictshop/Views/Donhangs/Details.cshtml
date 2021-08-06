@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Ictshop.Models.Chitietdonhang>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Đơn giá / 1 sản phẩm
+         </th>
+        <th>
+            Thành tiền
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sanpham.Tensp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Soluong)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Dongia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Thanhtien)
+    </td>
+</tr>
+    }
+
+</table>

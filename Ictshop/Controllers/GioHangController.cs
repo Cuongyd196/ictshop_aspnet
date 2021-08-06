@@ -155,7 +155,7 @@ namespace Ictshop.Controllers
 
         }
 
-        #region Đặt hàng
+        #region // Mới hoàn thiện
         //Xây dựng chức năng đặt hàng
         [HttpPost]
         public ActionResult DatHang()
@@ -176,20 +176,23 @@ namespace Ictshop.Controllers
             List<GioHang> gh = LayGioHang();
             ddh.MaNguoidung = kh.MaNguoiDung;
             ddh.Ngaydat = DateTime.Now;
+            Console.WriteLine(ddh);
             db.Donhangs.Add(ddh);
             db.SaveChanges();
             //Thêm chi tiết đơn hàng
             foreach (var item in gh)
             {
                 Chitietdonhang ctDH = new Chitietdonhang();
+                decimal thanhtien =  item.iSoLuong * (decimal) item.dDonGia;
                 ctDH.Madon = ddh.Madon;
                 ctDH.Masp = item.iMasp;
                 ctDH.Soluong = item.iSoLuong;
                 ctDH.Dongia = (decimal)item.dDonGia;
+                ctDH.Thanhtien = (decimal) thanhtien;
                 db.Chitietdonhangs.Add(ctDH);
             }
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Donhangs");
         }
         #endregion
 

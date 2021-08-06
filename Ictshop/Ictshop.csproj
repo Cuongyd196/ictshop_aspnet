@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -141,6 +141,7 @@
     <Compile Include="Areas\Admin\Controllers\NguoidungsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhanQuyensController.cs" />
     <Compile Include="Controllers\DanhmucController.cs" />
+    <Compile Include="Controllers\DonhangsController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanphamController.cs" />
@@ -148,47 +149,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Chitietdonhang.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
+    <Compile Include="Migrations\202107271655114_AddThanhtien.cs" />
+    <Compile Include="Migrations\202107271655114_AddThanhtien.Designer.cs">
+      <DependentUpon>202107271655114_AddThanhtien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Donhang.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Chitietdonhang.cs" />
+    <Compile Include="Models\Donhang.cs" />
     <Compile Include="Models\GioHang.cs" />
-    <Compile Include="Models\Hangsanxuat.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Hedieuhanh.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Hangsanxuat.cs" />
+    <Compile Include="Models\Hedieuhanh.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\Nguoidung.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PhanQuyen.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Qlbanhang.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Qlbanhang.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Qlbanhang.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Qlbanhang.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Qlbanhang.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sanpham.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>Qlbanhang.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Nguoidung.cs" />
+    <Compile Include="Models\PhanQuyen.cs" />
+    <Compile Include="Models\Qlbanhang.cs" />
+    <Compile Include="Models\Sanpham.cs" />
+    <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,16 +234,6 @@
     <Content Include="HinhanhSP\ss3.jpg" />
     <Content Include="HinhanhSP\ss4.jpg" />
     <Content Include="HinhanhSP\ss5.jpg" />
-    <Content Include="Models\Qlbanhang.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Qlbanhang.edmx</DependentUpon>
-      <LastGenOutput>Qlbanhang.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Qlbanhang.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Qlbanhang.edmx</DependentUpon>
-      <LastGenOutput>Qlbanhang.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -320,13 +286,6 @@
     <Content Include="Areas\Assets\src\scss\variables\_spacing.scss" />
     <Content Include="Areas\Assets\src\scss\_global.scss" />
     <Content Include="Areas\Assets\src\scss\_variables.scss" />
-    <EntityDeploy Include="Models\Qlbanhang.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Qlbanhang.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Qlbanhang.edmx.diagram">
-      <DependentUpon>Qlbanhang.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Nguoidungs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Nguoidungs\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Nguoidungs\Details.cshtml" />
@@ -362,13 +321,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -388,6 +340,15 @@
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\GioHang\SuaGioHang.cshtml" />
+    <Content Include="Web.Config" />
+    <Content Include="Views\Donhangs\Details.cshtml" />
+    <Content Include="Views\Donhangs\Index.cshtml" />
+    <None Include="Web.Debug.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
+    <None Include="Web.Release.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,6 +369,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202107271655114_AddThanhtien.resx">
+      <DependentUpon>202107271655114_AddThanhtien.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

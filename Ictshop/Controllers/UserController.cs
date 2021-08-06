@@ -45,40 +45,8 @@ namespace Ictshop.Controllers
 
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(FormCollection userForm)
-        {
-            if (ModelState.IsValid)
-            {
-
-                string user = userlog["TaiKhoan"].ToString();
-                string password = userlog["MatKhau"].ToString();
-
-
-                var f_password = GetMD5(password);
-                var data = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
-                if (data.Count() > 0)
-                {
-                    //add session
-                    Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["idUser"] = data.FirstOrDefault().idUser;
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewBag.error = "Login failed";
-                    return RedirectToAction("Login");
-                }
-            }
-            return View();
-
-        }
-
-
-
-            [HttpPost]
         public ActionResult Dangnhap(FormCollection userlog)
         {
             string userMail = userlog["userMail"].ToString();
