@@ -31,7 +31,7 @@ Phân quyền quản trị và khách hàng
 
 Bấm mua hàng : giỏ hàng sẽ cập nhật sản phẩm đã chọn.
 Có thể chỉnh sửa giỏ hàng >
-Chức năng đặt hàng chưa thực hiện xong :)).
+Đặt hàng
 
 Kích vào hình ảnh để xem chi tiết sản phẩm
 
