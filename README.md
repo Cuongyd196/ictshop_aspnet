@@ -1,4 +1,3 @@
-# ictshop_aspnet v1
 
 1. Giải nén
 
