@@ -1,6 +1,4 @@
-# ictshop_aspnet
-#Branch ictshopv1 là phiên bản v1 chưa update mua hàng
-#Branch update_muahang là phiên bản v2 đã update mua hàng
+
 1. Giải nén
 
 2. Kết nối cơ sở dữ liệu
