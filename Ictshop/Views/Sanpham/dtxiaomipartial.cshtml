@@ -5,10 +5,11 @@
     {
         <div class="col-md-3 col-sm-6">
             <a href="@Url.Action("xemchitiet", new {@Masp=item.Masp })">
-            <img src=@Url.Content("~/HinhanhSP/"+item.Anhbia) class="img-responsive" alt="" width="400" height="400" /></a>
+            <img src=@Url.Content("~" +item.Anhbia.ToString()) class="img-responsive" alt="" width="400" height="400" />
+            </a>
             <center>
                 <h3>@item.Tensp</h3>
-                <h3 style="color:red">Giá: @item.Giatien</h3>
+                <h3 style="color:red">@String.Format("{0:0,0}", @item.Giatien) VND</h3>
                 <br />
                 @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp, @strURL = Request.Url.ToString() }))
                 {

@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            Ảnh đại diện
+        </dt>
+
+        <dd>
+            <img src=@Url.Content("~" + @Html.DisplayFor(model => model.Anhdaidien)) class="img-responsive" alt="" width="200" height="200" />
+
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Hoten)
         </dt>
 
@@ -44,16 +52,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhanQuyen.TenQuyen)
+            Tên quyền
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PhanQuyen.TenQuyen)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNguoiDung }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn-primary"> @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaNguoiDung }, new { @style = "color:white;" }) </button>
 </p>

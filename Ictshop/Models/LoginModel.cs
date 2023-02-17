@@ -11,7 +11,7 @@ namespace Ictshop.Models
         [Key]
         [Display(Name = "Email")]
         public string userMail { get; set; }
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string password { get; set; }
     }
 }

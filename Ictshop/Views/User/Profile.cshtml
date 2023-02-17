@@ -1,0 +1,70 @@
+﻿@model Ictshop.Models.Nguoidung
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HỒ SƠ CÁ NHÂN</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ảnh đại diện
+        </dt>
+
+        <dd>
+            <img src=@Url.Content("~" + @Html.DisplayFor(model => model.Anhdaidien)) class="img-responsive" alt="" width="200" height="200" />
+
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dienthoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dienthoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-primary">
+        @Html.ActionLink("Chỉnh sửa hồ sơ", "Edit", new { id = Model.MaNguoiDung }, new { @style = "color:white;" })
+    </button>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</p>

@@ -31,7 +31,7 @@
 
             <td> @item.sTensp</td>
 
-            <td> <img src="@Url.Content("~/HinhanhSP/" +item.sAnhBia)" width="50" height="50" /></td>
+            <td> <img src="@Url.Content("~" +item.sAnhBia)" width="50" height="50" /></td>
 
             <td>  @String.Format("{0:0,0}", item.dDonGia) VNĐ</td>
 
@@ -52,7 +52,7 @@
         @Html.ActionLink("Chỉnh sửa giỏ hàng", "SuaGioHang")
     </td>
     <td colspan="6" style="text-align:right;color:blue">
-        @using (Html.BeginForm("DatHang", "GioHang",new { @class=""}))
+        @using (Html.BeginForm("ThanhToanDonHang", "GioHang",new { @class=""}))
         {
             <input type="submit" value="Đặt hàng" class="btn-danger" />
         }

@@ -1,4 +1,4 @@
-namespace Ictshop.Models
+﻿namespace Ictshop.Models
 {
     using System;
     using System.Collections.Generic;
@@ -19,6 +19,8 @@ namespace Ictshop.Models
         public int IDQuyen { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "Tên quyền")]
+
         public string TenQuyen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

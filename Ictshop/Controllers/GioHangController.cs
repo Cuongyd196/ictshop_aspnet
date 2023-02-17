@@ -158,8 +158,68 @@ namespace Ictshop.Controllers
         #region // Mới hoàn thiện
         //Xây dựng chức năng đặt hàng
         [HttpPost]
-        public ActionResult DatHang()
+        public ActionResult DatHang(FormCollection donhangForm)
         {
+            //Kiểm tra đăng đăng nhập
+            if (Session["use"] == null || Session["use"].ToString() == "")
+            {
+                return RedirectToAction("Dangnhap", "User");
+            }
+            //Kiểm tra giỏ hàng
+            if (Session["GioHang"] == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
+            Console.WriteLine(donhangForm);
+            string diachinhanhang = donhangForm["Diachinhanhang"].ToString();
+            string thanhtoan = donhangForm["MaTT"].ToString();
+            int ptthanhtoan = Int32.Parse(thanhtoan);
+
+            //Thêm đơn hàng
+            Donhang ddh = new Donhang();
+            Nguoidung kh = (Nguoidung)Session["use"];
+            List<GioHang> gh = LayGioHang();
+            ddh.MaNguoidung = kh.MaNguoiDung;
+            ddh.Ngaydat = DateTime.Now;
+            ddh.Thanhtoan = ptthanhtoan;
+            ddh.Diachinhanhang = diachinhanhang;
+            decimal tongtien = 0;
+            foreach (var item in gh)
+            {
+                decimal thanhtien = item.iSoLuong * (decimal)item.dDonGia;
+                tongtien += thanhtien;
+            }
+            ddh.Tongtien = tongtien;
+            db.Donhangs.Add(ddh);
+            db.SaveChanges();
+            //Thêm chi tiết đơn hàng
+            foreach (var item in gh)
+            {
+                Chitietdonhang ctDH = new Chitietdonhang();
+                decimal thanhtien =  item.iSoLuong * (decimal) item.dDonGia;
+                ctDH.Madon = ddh.Madon;
+                ctDH.Masp = item.iMasp;
+                ctDH.Soluong = item.iSoLuong;
+                ctDH.Dongia = (decimal)item.dDonGia;
+                ctDH.Thanhtien = (decimal) thanhtien;
+                ctDH.Phuongthucthanhtoan = 1;
+                db.Chitietdonhangs.Add(ctDH);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index", "Donhangs");
+        }
+        #endregion
+
+        public ActionResult ThanhToanDonHang()
+        {
+
+            ViewBag.MaTT = new SelectList(new[]
+                {
+                    new { MaTT = 1, TenPT="Thanh toán tiền mặt" },
+                    new { MaTT = 2, TenPT="Thanh toán chuyển khoản" },
+                }, "MaTT", "TenPT", 1);
+            ViewBag.MaNguoiDung = new SelectList(db.Nguoidungs, "MaNguoiDung", "Hoten");
+
             //Kiểm tra đăng đăng nhập
             if (Session["use"] == null || Session["use"].ToString() == "")
             {
@@ -174,27 +234,20 @@ namespace Ictshop.Controllers
             Donhang ddh = new Donhang();
             Nguoidung kh = (Nguoidung)Session["use"];
             List<GioHang> gh = LayGioHang();
-            ddh.MaNguoidung = kh.MaNguoiDung;
-            ddh.Ngaydat = DateTime.Now;
-            Console.WriteLine(ddh);
-            db.Donhangs.Add(ddh);
-            db.SaveChanges();
-            //Thêm chi tiết đơn hàng
+            decimal tongtien = 0;
             foreach (var item in gh)
             {
-                Chitietdonhang ctDH = new Chitietdonhang();
-                decimal thanhtien =  item.iSoLuong * (decimal) item.dDonGia;
-                ctDH.Madon = ddh.Madon;
-                ctDH.Masp = item.iMasp;
-                ctDH.Soluong = item.iSoLuong;
-                ctDH.Dongia = (decimal)item.dDonGia;
-                ctDH.Thanhtien = (decimal) thanhtien;
-                db.Chitietdonhangs.Add(ctDH);
+                decimal thanhtien = item.iSoLuong * (decimal)item.dDonGia;
+                tongtien += thanhtien;
             }
-            db.SaveChanges();
-            return RedirectToAction("Index", "Donhangs");
+
+            ddh.MaNguoidung = kh.MaNguoiDung;
+            ddh.Ngaydat = DateTime.Now;
+            Chitietdonhang ctDH = new Chitietdonhang();
+            ViewBag.tongtien = tongtien;
+            return View(ddh);
+
         }
-        #endregion
 
     }
 }

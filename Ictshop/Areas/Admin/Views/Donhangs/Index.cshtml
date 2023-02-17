@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Ictshop.Models.Donhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách đơn hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Nguoidung.Hoten)*@
+            Họ tên khách hàng
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaydat)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Tinhtrang)*@
+            Tình trạng đơn hàng
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thanhtoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diachinhanhang)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nguoidung.Hoten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ngaydat)
+    </td>
+    <td>
+        @{ if (@item.Tinhtrang == 0)
+            {
+            <h5 style="color:red">Đang chờ xác nhận. </h5> }
+                            else if (@item.Tinhtrang == 1)
+                            {
+            <h5 style="color:green">Đã xác nhận  </h5> }
+                            else
+                            {
+            <h5 style="color:orangered">Đang chờ xác nhận </h5> } }
+    </td>
+    <td>
+        @{ if (@item.Thanhtoan == 1)
+            {
+                <div style="color:red">Thanh toán tiền mặt</div> }
+                                else if (@item.Thanhtoan == 2)
+                                {
+                <div style="color:brown">Thanh toán chuyển khoản</div> } }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diachinhanhang)
+    </td>
+    <td>
+        @*<button class="btn btn-success">
+            @Html.ActionLink("Xác nhận", "Edit", new { id = item.Madon }, new { @style = "color:white;" })
+        </button>*@
+        <button class="btn btn-primary">
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.Madon }, new { @style = "color:white;" })
+        </button>
+        @*<button class="btn btn-danger">
+            @Html.ActionLink("Xóa", "Delete", new { id = item.Madon }, new { @style = "color:white;" })
+        </button>*@
+    </td>
+</tr>
+}
+
+</table>

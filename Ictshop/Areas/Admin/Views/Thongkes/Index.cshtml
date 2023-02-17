@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Ictshop.Models.Thongke>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+
+<center><h2 style="color:red">Top 5 khách hàng mua hàng nhiều nhất</h2></center>
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Tổng tiền đã mua
+        </th>
+        <th>
+            Số lượng đơn hàng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Tennguoidung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dienthoai)
+            </td>
+            <td>
+                @String.Format("{0:0,0}", item.Tongtien) VNĐ
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+
+        </tr>
+    }
+
+</table>

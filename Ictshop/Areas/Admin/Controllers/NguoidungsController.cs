@@ -85,13 +85,15 @@ namespace Ictshop.Areas.Admin.Controllers
         // POST: Admin/Nguoidungs/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNguoiDung,Hoten,Email,Dienthoai,Matkhau,IDQuyen")] Nguoidung nguoidung)
+        public ActionResult Edit([Bind(Include = "MaNguoiDung,Hoten,Email,Dienthoai,Matkhau,IDQuyen, Anhdaidien, Diachi")] Nguoidung nguoidung)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(nguoidung).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //@ViewBag.show = "Chỉnh sửa hồ sơ thành công";
+                //return View(nguoidung);
+                return RedirectToAction("Details", new { id = nguoidung.MaNguoiDung });
             }
             ViewBag.IDQuyen = new SelectList(db.PhanQuyens, "IDQuyen", "TenQuyen", nguoidung.IDQuyen);
             return View(nguoidung);

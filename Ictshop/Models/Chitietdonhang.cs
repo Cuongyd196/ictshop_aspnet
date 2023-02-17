@@ -1,4 +1,4 @@
-namespace Ictshop.Models
+﻿namespace Ictshop.Models
 {
     using System;
     using System.Collections.Generic;
@@ -18,10 +18,16 @@ namespace Ictshop.Models
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Masp { get; set; }
+        [Display(Name = "Số lượng")]
 
         public int? Soluong { get; set; }
+        [Display(Name = "Phương thức thanh toán")]
+
+        public int? Phuongthucthanhtoan { get; set; }
+        [Display(Name = "Đơn giá")]
 
         public decimal? Dongia { get; set; }
+        [Display(Name = "Thành tiền")]
 
         public decimal? Thanhtien { get; set; }
 
