@@ -1,0 +1,85 @@
+﻿@model Ictshop.Models.Donhang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nguoidung.Hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nguoidung.Hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaydat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydat)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Tinhtrang)*@
+            Tình trạng đơn hàng
+        </dt>
+
+        <dd>
+            @{
+                if (Model.Tinhtrang == 0)
+                {
+                    <div style="color:red">Đang chờ xác nhận</div>
+                }
+                else if (Model.Tinhtrang == 1)
+                {
+
+
+                    <div style="color:slateblue">Đã xác nhận</div>
+
+                }
+                else
+                {
+                    <div style="color:red">Đang chờ xác nhận</div>
+
+                }
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thanhtoan)
+        </dt>
+
+        <dd>
+            @{
+                if (Model.Thanhtoan == 1)
+                {
+                    <div style="color:red">Thanh toán tiền mặt</div>
+                }
+                else if (Model.Thanhtoan == 2)
+                {
+                    <div style="color:slateblue">Thanh toán chuyển khoản</div>
+
+                }
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diachinhanhang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachinhanhang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button> @Html.ActionLink("Xác nhận đơn hàng", "Xacnhan", new { id = Model.Madon }) </button>
+</p>

@@ -30,9 +30,15 @@
         @Html.DisplayFor(modelItem => item.Tenhdh)
     </td>
     <td>
-        @Html.ActionLink("Sửa", "Edit", new { id = item.Mahdh }) |
-        @Html.ActionLink("Chi tiết", "Details", new { id = item.Mahdh }) |
-        @Html.ActionLink("Thêm mới ", "Delete", new { id = item.Mahdh })
+        <button class="btn btn-success">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.Mahdh}, new { @style = "color:white;" })
+        </button>
+        <button class="btn btn-primary">
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.Mahdh }, new { @style = "color:white;" })
+        </button>
+        <button class="btn btn-danger">
+            @Html.ActionLink("Xóa", "Delete", new { id = item.Mahdh }, new { @style = "color:white;" })
+        </button>
     </td>
 </tr>
 }

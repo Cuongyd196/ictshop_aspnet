@@ -1,11 +1,9 @@
 ﻿@model Ictshop.Models.Sanpham
 
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-}
+@{ ViewBag.Title = "Details";
+                Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml"; }
 
-    <h2>Thông tin chi tiết</h2>
+<h2>Thông tin chi tiết</h2>
 
 <div>
     <h4>Sản phẩm</h4>
@@ -102,6 +100,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.Masp }) |
-    @Html.ActionLink("Về trang chủ", "Index")
+    <button class="btn btn-success">
+        @Html.ActionLink("Sửa sản phẩm", "Edit", new { id = Model.Masp }, new { @style = "color:white;" }) 
+    </button>
 </p>
+

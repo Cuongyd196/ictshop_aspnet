@@ -49,32 +49,30 @@ namespace Ictshop.Areas.Admin.Controllers
         // Tạo sản phẩm mới phương thức GET: Admin/Home/Create
         public ActionResult Create()
         {
-            //Để tạo dropdownList bên view
-            var hangselected = new SelectList(db.Hangsanxuats, "Mahang", "Tenhang");
-            ViewBag.Mahang = hangselected;
-            var hdhselected = new SelectList(db.Hedieuhanhs, "Mahdh", "Tenhdh");
-            ViewBag.Mahdh = hdhselected;
+            ViewBag.Mahang = new SelectList(db.Hangsanxuats, "Mahang", "Tenhang");
+            ViewBag.Mahdh = new SelectList(db.Hedieuhanhs, "Mahdh", "Tenhdh");
             return View();
         }
 
-        // Tạo sản phẩm mới phương thức POST: Admin/Home/Create
+        // POST: Admin/Sanphams/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(Sanpham sanpham)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Masp,Tensp,Giatien,Soluong,Mota,Thesim,Bonhotrong,Sanphammoi,Ram,Anhbia,Mahang,Mahdh")] Sanpham sanpham)
         {
-            try
-            { 
-                //Thêm  sản phẩm mới
+            if (ModelState.IsValid)
+            {
                 db.Sanphams.Add(sanpham);
-                // Lưu lại
                 db.SaveChanges();
-                // Thành công chuyển đến trang index
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ViewBag.Mahang = new SelectList(db.Hangsanxuats, "Mahang", "Tenhang", sanpham.Mahang);
+            ViewBag.Mahdh = new SelectList(db.Hedieuhanhs, "Mahdh", "Tenhdh", sanpham.Mahdh);
+            return View(sanpham);
         }
+
 
         // Sửa sản phẩm GET lấy ra ID sản phẩm: Admin/Home/Edit/5
         public ActionResult Edit(int id)
@@ -87,7 +85,6 @@ namespace Ictshop.Areas.Admin.Controllers
             ViewBag.Mahdh = hdhselected;
            // 
             return View(dt);
-            
         }
 
         // POST: Admin/Home/Edit/5

@@ -11,7 +11,7 @@
 <h2>Quản lý sản phẩm </h2>
 
 <p>
-    <button class="btn-default">@Html.ActionLink("Thêm mới", "Create")</button>
+    <button class="btn-default" style="color:white">@Html.ActionLink("Thêm mới", "Create")</button>
 </p>
 <table class="table table-bordered">
     <tr>
@@ -45,39 +45,45 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+<tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Tensp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Giatien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soluong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mota)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thesim)
-            </td>
-            <td>
-                <img src="@Url.Content("~/HinhanhSP/" +item.Anhbia)" width="50" height="50" />
-                @*@Html.DisplayFor(modelItem => item.Anhbia)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hangsanxuat.Tenhang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hedieuhanh.Tenhdh)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.Masp })|
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.Masp }) |
-                @Html.ActionLink("Xoá", "Delete", new { id = item.Masp })
-            </td>
-        </tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tensp)
+    </td>
+    <td>
+        @String.Format("{0:0,0}", item.Giatien) VNĐ
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Soluong)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mota)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Thesim)
+    </td>
+    <td>
+        <img src="@Url.Content("~" +item.Anhbia)" width="50" height="50" />
+        @*@Html.DisplayFor(modelItem => item.Anhbia)*@
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hangsanxuat.Tenhang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hedieuhanh.Tenhdh)
+    </td>
+    <td>
+        <button class="btn btn-success">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.Masp }, new { @style = "color:white;" })
+        </button>
+        <button class="btn btn-primary">
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.Masp }, new { @style = "color:white;" })
+        </button>
+        <button class="btn btn-danger">
+            @Html.ActionLink("Xóa", "Delete", new { id = item.Masp }, new { @style = "color:white;" })
+        </button>
+    </td>
+</tr>
     }
 
 </table>

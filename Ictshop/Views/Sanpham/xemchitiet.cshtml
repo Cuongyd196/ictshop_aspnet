@@ -11,10 +11,10 @@
 <CENTER>
     <div>
         <h2>CHI TIẾT SẢN PHẨM</h2>
-        <img src="@Url.Content("~/HinhanhSP/" +@Model.Anhbia)" />
+        <img src="@Url.Content("~" +@Model.Anhbia)" />
         <br />
         <h3> @Model.Tensp</h3>
-        <h3 style="color:red">Giá: @Model.Giatien</h3>
+        <h3 style="color:red">Giá: @String.Format("{0:0,0}", @Model.Giatien) VND</h3>
         <br />
         @Model.Mota
         <br />
